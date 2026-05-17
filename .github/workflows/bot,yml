@@ -1,29 +1,35 @@
-name: BED Telegram Growth Engine
+Get started with GitHub Actions
+Build, test, and deploy your code. Make code reviews, branch management, and issue triaging work the way you want. Select a workflow to get started.
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "*/45 * * * *"   # every 45 minutes
+Skip this and set up a workflow yourself 
 
-jobs:
-  send:
-    runs-on: ubuntu-latest
+Search workflows
+Suggested for this repository
+Publish Node.js Package to GitHub Packages
+By GitHub Actions
 
-    steps:
-      - uses: actions/checkout@v4
+Publish Node.js Package to GitHub Packages logo
+Publishes a Node.js package to GitHub Packages.
 
-      - name: Install Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+JavaScript
+Publish Node.js Package
+By GitHub Actions
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: bed-telegram-bot
+Publish Node.js Package logo
+Publishes a Node.js package to npm.
 
-      - name: Send Telegram Message
-        run: node bot.js
-        working-directory: bed-telegram-bot
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          CHAT_ID_1: ${{ secrets.CHAT_ID_1 }}
+JavaScript
+Webpack
+By GitHub Actions
+
+Webpack logo
+Build a NodeJS project with npm and webpack.
+
+JavaScript
+Deno
+By GitHub Actions
+
+Deno logo
+Test your Deno project
+
+JavaScript
