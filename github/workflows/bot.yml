@@ -1,0 +1,29 @@
+name: BED Telegram Growth Engine
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/45 * * * *"   # every 45 minutes
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: bed-telegram-bot
+
+      - name: Send Telegram Message
+        run: node bot.js
+        working-directory: bed-telegram-bot
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID_1: ${{ secrets.CHAT_ID_1 }}
