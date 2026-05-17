@@ -7,7 +7,7 @@ const TOKEN = process.env.TELEGRAM_TOKEN;
 const CHAT_ID = process.env.CHAT_ID_1;
 
 // === LOAD YAML ===
-const file = yaml.load(fs.readFileSync("./bed-telegram-bot/bot.yaml", "utf8"));
+const file = yaml.load(fs.readFileSync("./bot.yaml", "utf8"));
 const messages = file.messages;
 
 // === PICK RANDOM MESSAGE ===
