@@ -1,48 +1,71 @@
 messages:
-  - id: welcome_short
+  - id: 1
     text: |
-      🔥 BED OS v4 — MIT’s live behavioral research system  
-      Enter → https://bedmitclean-495114.web.app/OS.html  
-      Earn BSPR by doing real actions.
+      ◆ BED OS is live — built independently, deployed on MIT campus.
 
-  - id: what_is_bspr_short
-    text: |
-      💠 BSPR — real Solana token earned from real actions  
-      Not farmable. Every token = verified event.  
-      Start → https://bedmitclean-495114.web.app/scan.html
+      A real behavioral engine running across 18 campus nodes.
+      Every action verified. Every incentive backed by real behavior.
 
-  - id: how_to_earn_short
-    text: |
-      ⚡ Earn BSPR by completing missions  
-      Scan → https://bedmitclean-495114.web.app/scan.html  
-      X posts, MIT visits, QR scans, referrals, research.
+      Enter → https://bedmitclean-495114.web.app/scan.html
+      #BEDos #BSPR #Solana #MIT
 
-  - id: research_value_short
+  - id: 2
     text: |
-      🧠 BSPR powers a live MIT behavioral experiment  
-      Every token = a logged, verified action.  
-      Dashboard → https://bedmitclean-495114.web.app/dashboard.html
+      ◆ BSPR = Proof‑of‑Behavior.
 
-  - id: mit_experiment_short
-    text: |
-      📍 MIT Campus Experiment — live now  
-      Visit nodes → claim BSPR instantly.  
-      Map → https://bedmitclean-495114.web.app/MIT_EXPERIMENT.html
+      Not a meme. Not farmable.
+      Issued ONLY when BED OS verifies a real human action.
 
-  - id: pump_fun_short
-    text: |
-      💠 BSPR — live on Solana · Pump.fun  
-      Earn by doing real actions in BED OS.  
-      View → https://pump.fun/coin/C879Ja8eC6uEm7TL8anfrMcok2gLW8ooSHR95km4pump
+      Earn → https://bedmitclean-495114.web.app/scan.html
+      Trade → https://pump.fun/coin/C879Ja8eC6uEm7TL8anfrMcok2gLW8ooSHR95km4pump
 
-  - id: share_template_x_short
+  - id: 3
     text: |
-      🐦 Earn BSPR by posting on X  
-      Post → return to hub → auto‑credit.  
-      Hub → https://bedmitclean-495114.web.app/hub.html
+      ◆ The MIT deployment is live.
 
-  - id: all_links_short
+      Live nodes. Live analytics. Real state transitions.
+      A behavioral engine running on real people in a real environment.
+
+      Watch live → https://bedmitclean-495114.web.app/MIT_EXPERIMENT.html
+
+  - id: 4
     text: |
-      🔗 BED OS v4 — All Links  
-      Entry → https://bedmitclean-495114.web.app/scan.html  
-      Hub → https://bedmitclean-495114.web.app/hub.html
+      ◆ Earn BSPR in under 2 minutes.
+
+      1. Enter BED OS → https://bedmitclean-495114.web.app/scan.html
+      2. Go to Mission Hub → https://bedmitclean-495114.web.app/hub.html
+      3. Complete missions → auto‑verified, auto‑credited.
+
+      Real utility. Real verification.
+
+  - id: 5
+    text: |
+      ◆ BSPR supply = human behavior.
+
+      No printing. No bots. No shortcuts.
+      Supply grows ONLY when real people do real things.
+
+      Earn → https://bedmitclean-495114.web.app/scan.html
+      Trade → https://pump.fun/coin/C879Ja8eC6uEm7TL8anfrMcok2gLW8ooSHR95km4pump
+
+  - id: 6
+    text: |
+      ◆ Why MIT matters.
+
+      BED OS is independently built.
+      MIT is the proving ground: high‑variance, high‑intensity environment.
+
+      If it works here, it works anywhere.
+
+      Experiment → https://bedmitclean-495114.web.app/MIT_EXPERIMENT.html
+
+  - id: 7
+    text: |
+      ◆ The system is learning.
+
+      Activation timing. Engagement dwell time.
+      Propagation velocity. Streak stability. Collective alignment.
+
+      Every action strengthens the model.
+
+      Join → https://bedmitclean-495114.web.app/scan.html
