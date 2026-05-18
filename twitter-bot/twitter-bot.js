@@ -1,6 +1,6 @@
-import { TwitterApi } from "twitter-api-v2";
-import fs from "fs";
-import yaml from "js-yaml";
+const { TwitterApi } = require("twitter-api-v2");
+const fs = require("fs");
+const yaml = require("js-yaml");
 
 // Load messages
 const file = yaml.load(fs.readFileSync("./twitter-bot.yaml", "utf8"));
