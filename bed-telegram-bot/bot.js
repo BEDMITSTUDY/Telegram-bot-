@@ -1,32 +1,28 @@
-import fs from "fs";
-import yaml from "js-yaml";
-import axios from "axios";
+name: BED Telegram Autoposter
 
-// === CONFIG ===
-const TOKEN = process.env.TELEGRAM_TOKEN;
-const CHAT_ID = process.env.CHAT_ID_1;
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # runs every 30 minutes
+  workflow_dispatch:
 
-// === LOAD YAML ===
-const file = yaml.load(fs.readFileSync("./bot.yaml", "utf8"));
-const messages = file.messages;
+jobs:
+  send:
+    runs-on: ubuntu-latest
 
-// === PICK RANDOM MESSAGE ===
-const random = messages[Math.floor(Math.random() * messages.length)];
-const text = random.text;
+    steps:
+      - uses: actions/checkout@v4
 
-// === SEND TO TELEGRAM ===
-async function sendMessage() {
-  try {
-    await axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-      chat_id: CHAT_ID,
-      text: text,
-      parse_mode: "HTML"
-    });
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    console.log("Message sent:", random.id);
-  } catch (err) {
-    console.error("Error sending message:", err.response?.data || err);
-  }
-}
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./bed-telegram-bot
 
-sendMessage();
+      - name: Run autoposter
+        run: node bot.js
+        working-directory: ./bed-telegram-bot
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
