@@ -1,29 +1,294 @@
-name: BED Telegram Growth Engine
+messages:
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "*/45 * * * *"   # every 45 minutes
+  ############################################################
+  # 1. LONG-FORM EDUCATIONAL SERIES (6–12 hr cooldown)
+  ############################################################
 
-jobs:
-  send:
-    runs-on: ubuntu-latest
+  - id: edu_1_intro
+    category: education
+    weight: 10
+    cooldown_hours: 6
+    text: |
+      🔷 **What is BED OS?**
+      BED OS is a behavioral engine built at MIT.
+      It measures how people respond to incentives in real time.
+      Every action becomes part of a live research dataset.
 
-    steps:
-      - uses: actions/checkout@v4
+      🌐 Enter:
+      https://bedmitclean-495114.web.app/OS.html
 
-      - name: Install Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+  - id: edu_2_behavior
+    category: education
+    weight: 9
+    cooldown_hours: 6
+    text: |
+      🧠 **Behavior = Data**
+      BED OS tracks:
+      • Attention  
+      • Engagement  
+      • Propagation  
+      • Saturation  
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: bed-telegram-bot
+      BSPR is the tokenized record of these events.
 
-      - name: Send Telegram Message
-        run: node bot.js
-        working-directory: bed-telegram-bot
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          CHAT_ID_1: ${{ secrets.CHAT_ID_1 }}
+  - id: edu_3_engine
+    category: education
+    weight: 8
+    cooldown_hours: 6
+    text: |
+      ⚙️ **The Engine Loop**
+      BED OS models:
+      Awareness → Activation → Engagement → Saturation
+
+      Each transition is triggered by real user actions.
+
+  - id: edu_4_incentives
+    category: education
+    weight: 8
+    cooldown_hours: 6
+    text: |
+      🎯 **Incentives Drive Behavior**
+      BED OS tests how incentives shape decisions.
+      BSPR is the incentive layer.
+      Every token = a verified action.
+
+  - id: edu_5_field
+    category: education
+    weight: 7
+    cooldown_hours: 6
+    text: |
+      🌍 **Digital + Physical**
+      BED OS runs online AND across MIT campus.
+      QR nodes track real-world propagation.
+
+      📍 Map:
+      https://bedmitclean-495114.web.app/MIT_EXPERIMENT.html
+
+  - id: edu_6_research
+    category: education
+    weight: 7
+    cooldown_hours: 6
+    text: |
+      📚 **Research Purpose**
+      BED OS is a live experiment in:
+      • Behavioral economics  
+      • Incentive design  
+      • Information propagation  
+
+      BSPR is the measurement tool.
+
+  ############################################################
+  # 2. MISSION OF THE DAY (2–3 hr cooldown)
+  ############################################################
+
+  - id: mission_daily_scan
+    category: missions
+    weight: 10
+    cooldown_hours: 3
+    text: |
+      ⚡ **Mission of the Day**
+      Scan any BED OS QR code.
+
+      🎁 Reward: 20,000 BSPR  
+      🔗 Scan:
+      https://bedmitclean-495114.web.app/scan.html
+
+  - id: mission_daily_os
+    category: missions
+    weight: 9
+    cooldown_hours: 3
+    text: |
+      🚀 **Mission of the Day**
+      Enter BED OS and explore any page.
+
+      🎁 Reward: 15,000 BSPR  
+      🔗 OS:
+      https://bedmitclean-495114.web.app/OS.html
+
+  - id: mission_daily_map
+    category: missions
+    weight: 8
+    cooldown_hours: 3
+    text: |
+      🗺️ **Mission of the Day**
+      Visit the MIT experiment map.
+
+      🎁 Reward: 10,000 BSPR  
+      🔗 Map:
+      https://bedmitclean-495114.web.app/MIT_EXPERIMENT.html
+
+  ############################################################
+  # 3. BSPR REWARD ANNOUNCEMENTS (1–2 hr cooldown)
+  ############################################################
+
+  - id: reward_50k
+    category: rewards
+    weight: 10
+    cooldown_hours: 2
+    text: |
+      🎁 **50,000 BSPR Mission Live**
+      Complete the mission posted today and earn instantly.
+      One reward per user.
+
+  - id: reward_new_tier
+    category: rewards
+    weight: 8
+    cooldown_hours: 2
+    text: |
+      🔥 **New Reward Tier Activated**
+      Higher BSPR payouts now available for select missions.
+
+  ############################################################
+  # 4. TELEGRAM ONBOARDING FUNNEL (12–24 hr cooldown)
+  ############################################################
+
+  - id: onboard_1_welcome
+    category: onboarding
+    weight: 12
+    cooldown_hours: 24
+    text: |
+      👋 **Welcome to BED OS**
+      You’re inside a live MIT behavioral experiment.
+      Earn BSPR by completing real actions.
+
+  - id: onboard_2_start
+    category: onboarding
+    weight: 10
+    cooldown_hours: 24
+    text: |
+      🚀 **Start Here**
+      Enter BED OS:
+      https://bedmitclean-495114.web.app/OS.html
+
+  - id: onboard_3_earn
+    category: onboarding
+    weight: 9
+    cooldown_hours: 24
+    text: |
+      💠 **Earn BSPR**
+      Complete missions, scan QR codes, explore the system.
+
+  ############################################################
+  # 5. BED OS EXPLAINER SERIES (4 hr cooldown)
+  ############################################################
+
+  - id: os_1_core
+    category: os
+    weight: 10
+    cooldown_hours: 4
+    text: |
+      🔷 **BED OS Core**
+      A behavioral engine that logs real actions.
+      Every click, scan, and movement becomes data.
+
+  - id: os_2_states
+    category: os
+    weight: 9
+    cooldown_hours: 4
+    text: |
+      🔄 **State Transitions**
+      Users move through:
+      Awareness → Activation → Engagement → Saturation
+
+  - id: os_3_incentive
+    category: os
+    weight: 8
+    cooldown_hours: 4
+    text: |
+      🎯 **Incentive Layer**
+      BSPR rewards shape how users behave inside the system.
+
+  ############################################################
+  # 6. MIT RESEARCH DEEP-DIVE (6 hr cooldown)
+  ############################################################
+
+  - id: mit_1_intro
+    category: research
+    weight: 10
+    cooldown_hours: 6
+    text: |
+      🎓 **MIT Deployment**
+      BED OS is live across MIT campus nodes.
+      Each scan logs a real-world propagation event.
+
+  - id: mit_2_field
+    category: research
+    weight: 9
+    cooldown_hours: 6
+    text: |
+      🧭 **Field Nodes**
+      QR codes placed across campus measure movement + engagement.
+
+  - id: mit_3_data
+    category: research
+    weight: 8
+    cooldown_hours: 6
+    text: |
+      📊 **Data Model**
+      Each BSPR token = one verified behavioral datapoint.
+
+  ############################################################
+  # 7. BSPR UTILITY NARRATIVE (3 hr cooldown)
+  ############################################################
+
+  - id: bspr_1_utility
+    category: token
+    weight: 12
+    cooldown_hours: 3
+    text: |
+      💠 **BSPR Utility**
+      BSPR is earned, not farmed.
+      It represents real actions inside BED OS.
+
+  - id: bspr_2_signal
+    category: token
+    weight: 10
+    cooldown_hours: 3
+    text: |
+      📡 **Signal Token**
+      BSPR measures:
+      • Attention  
+      • Engagement  
+      • Propagation  
+
+  ############################################################
+  # 8. CRYPTO-DEGEN HYPE PACK (1 hr cooldown)
+  ############################################################
+
+  - id: hype_1
+    category: hype
+    weight: 10
+    cooldown_hours: 1
+    text: |
+      🚀 **MIT-backed token live**
+      Earn BSPR by doing real actions.
+      Not a meme — a behavioral engine.
+
+  - id: hype_2
+    category: hype
+    weight: 9
+    cooldown_hours: 1
+    text: |
+      🔥 **Earn-to-Engage**
+      Complete missions → Earn BSPR → Level up inside BED OS.
+
+  ############################################################
+  # 9. HEARTBEAT / KEEP-ALIVE (0.5 hr cooldown)
+  ############################################################
+
+  - id: heartbeat_1
+    category: heartbeat
+    weight: 5
+    cooldown_hours: 0.5
+    text: |
+      💬 **BED OS is live**
+      Actions are being logged.  
+      BSPR is being earned.
+
+  - id: heartbeat_2
+    category: heartbeat
+    weight: 5
+    cooldown_hours: 0.5
+    text: |
+      📡 System online.  
+      Behavioral events updating in real time.
