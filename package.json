@@ -1,9 +1,0 @@
-{
-  "name": "bed-telegram-bot",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "js-yaml": "^4.1.0",
-    "node-fetch": "^3.3.2"
-  }
-}
