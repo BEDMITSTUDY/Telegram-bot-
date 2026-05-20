@@ -1,122 +1,26 @@
-messages:
+name: BED Telegram Autoposter
 
-  ############################################################
-  # 1. LONG-FORM EDUCATIONAL SERIES (6–12 hr cooldown)
-  ############################################################
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # runs every 30 minutes
+  workflow_dispatch:
 
-  - id: edu_1_intro
-    category: education
-    weight: 10
-    cooldown_hours: 6
-    text: |
-      🔷 **What is BED OS?**
-      BED OS is a behavioral engine built at MIT.
-      It measures how people respond to incentives in real time.
-      Every action becomes part of a live research dataset.
+jobs:
+  send:
+    runs-on: ubuntu-latest
 
-      🌐 Enter:
-      https://bedmitclean-495114.web.app/OS.html
+    steps:
+      - uses: actions/checkout@v4
 
-  - id: edu_2_behavior
-    category: education
-    weight: 9
-    cooldown_hours: 6
-    text: |
-      🧠 **Behavior = Data**
-      BED OS tracks:
-      • Attention  
-      • Engagement  
-      • Propagation  
-      • Saturation  
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      BSPR is the tokenized record of these events.
+      - name: Install dependencies
+        run: npm install
 
-  - id: edu_3_engine
-    category: education
-    weight: 8
-    cooldown_hours: 6
-    text: |
-      ⚙️ **The Engine Loop**
-      BED OS models:
-      Awareness → Activation → Engagement → Saturation
-
-      Each transition is triggered by real user actions.
-
-  - id: edu_4_incentives
-    category: education
-    weight: 8
-    cooldown_hours: 6
-    text: |
-      🎯 **Incentives Drive Behavior**
-      BED OS tests how incentives shape decisions.
-      BSPR is the incentive layer.
-      Every token = a verified action.
-
-  - id: edu_5_field
-    category: education
-    weight: 7
-    cooldown_hours: 6
-    text: |
-      🌍 **Digital + Physical**
-      BED OS runs online AND across MIT campus.
-      QR nodes track real-world propagation.
-
-      📍 Map:
-      https://bedmitclean-495114.web.app/MIT_EXPERIMENT.html
-
-  - id: edu_6_research
-    category: education
-    weight: 7
-    cooldown_hours: 6
-    text: |
-      📚 **Research Purpose**
-      BED OS is a live experiment in:
-      • Behavioral economics  
-      • Incentive design  
-      • Information propagation  
-
-      BSPR is the measurement tool.
-
-  ############################################################
-  # 2. MISSION OF THE DAY (2–3 hr cooldown)
-  ############################################################
-
-  - id: mission_daily_scan
-    category: missions
-    weight: 10
-    cooldown_hours: 3
-    text: |
-      ⚡ **Mission of the Day**
-      Scan any BED OS QR code.
-
-      🎁 Reward: 20,000 BSPR  
-      🔗 Scan:
-      https://bedmitclean-495114.web.app/scan.html
-
-  - id: mission_daily_os
-    category: missions
-    weight: 9
-    cooldown_hours: 3
-    text: |
-      🚀 **Mission of the Day**
-      Enter BED OS and explore any page.
-
-      🎁 Reward: 15,000 BSPR  
-      🔗 OS:
-      https://bedmitclean-495114.web.app/OS.html
-
-  - id: mission_daily_map
-    category: missions
-    weight: 8
-    cooldown_hours: 3
-    text: |
-      🗺️ **Mission of the Day**
-      Visit the MIT experiment map.
-
-      🎁 Reward: 10,000 BSPR  
-      🔗 Map:
-      https://bedmitclean-495114.web.app/MIT_EXPERIMENT.html
-
-  ############################################################
-  # 3. BSPR REWARD ANNOUNCEMENTS (1–2 hr cooldown)
-  ################################################
+      - name: Run autoposter
+        run: node bot.js
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
