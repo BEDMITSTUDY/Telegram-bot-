@@ -1,8 +1,13 @@
 {
-  "name": "telegram-bot",
+  "name": "bed-telegram-bot",
   "version": "1.0.0",
-  "type": "module",
+  "description": "Automated Telegram autoposter for BED",
+  "main": "bot.js",
   "dependencies": {
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "node-telegram-bot-api": "^0.61.0"
+  },
+  "scripts": {
+    "start": "node bot.js"
   }
 }
