@@ -2,7 +2,8 @@ const fs = require("fs");
 const yaml = require("js-yaml");
 const TelegramBot = require("node-telegram-bot-api");
 
-const bot = new TelegramBot(process.env.TELEGRAM_TOKEN);
+// MUST specify polling: false for GitHub Actions
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 
 function getRandomMessage() {
   const file = yaml.load(fs.readFileSync("bed_bot_messages.yml", "utf8"));
@@ -13,8 +14,12 @@ function getRandomMessage() {
 async function autopost() {
   try {
     const msg = getRandomMessage();
-    await bot.sendMessage(process.env.CHAT_ID, msg);
-    console.log("Message sent:", msg);
+
+    console.log("Loaded message:", msg);
+
+    await bot.sendMessage(process.env.CHAT_ID, msg.text);
+
+    console.log("Message sent successfully.");
   } catch (err) {
     console.error("Error sending message:", err);
   }
