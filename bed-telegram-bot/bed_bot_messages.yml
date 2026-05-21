@@ -1,25 +1,97 @@
 messages:
-  - id: hype1
-    text: "BSPR is heating up — stay sharp."
+
+  # ————————————————
+  # INTRO / EDUCATION (Morning)
+  # ————————————————
+  - id: intro_bed_1
+    category: intro
+    text: "BED is a behavioral engine built from MIT research. It shapes demand using timing‑optimized incentives."
+    weight: 3
+    cooldown_hours: 24
+
+  - id: intro_bed_2
+    category: intro
+    text: "The BED system learns from your actions. Every scan, every mission, every choice feeds the engine."
+    weight: 2
+    cooldown_hours: 24
+
+  - id: intro_bspr_1
+    category: intro
+    text: "BSPR is the behavioral signal of the BED system — not hype, but a measure of aligned action."
+    weight: 3
+    cooldown_hours: 24
+
+  # ————————————————
+  # MISSIONS / ACTION (Mid‑Day)
+  # ————————————————
+  - id: mission_scan_1
+    category: mission
+    text: "Mid‑day mission: complete one scan. Log one action. Move the Collective forward."
+    weight: 4
+    cooldown_hours: 6
+
+  - id: mission_loop_1
+    category: mission
+    text: "Activate your incentive loop → Scan → Earn → Repeat. Small actions compound."
     weight: 3
     cooldown_hours: 6
 
-  - id: hype2
-    text: "Momentum rising. Collective energy is building."
-    weight: 2
-    cooldown_hours: 4
-
-  - id: utility1
-    text: "Remember: scanning earns rewards. Stay active."
-    weight: 1
+  # ————————————————
+  # TOKEN / BSPR (Mid‑Day)
+  # ————————————————
+  - id: token_bspr_1
+    category: token
+    text: "BSPR rewards aligned behavior. It’s the incentive layer of the BED engine."
+    weight: 3
     cooldown_hours: 12
 
-  - id: mission1
-    text: "Complete your daily scan to stay in the Collective loop."
+  - id: token_bspr_2
+    category: token
+    text: "Earn BSPR by completing missions and participating in the experiment. Real actions → Real incentives."
     weight: 2
-    cooldown_hours: 8
+    cooldown_hours: 12
 
-  - id: community1
-    text: "The Collective grows stronger with every action."
-    weight: 1
+  # ————————————————
+  # RESEARCH / MIT (Evening)
+  # ————————————————
+  - id: research_mit_1
+    category: research
+    text: "The BED experiment is grounded in MIT’s Constrained Markov Decision Process framework. Timing matters."
+    weight: 3
+    cooldown_hours: 24
+
+  - id: research_mit_2
+    category: research
+    text: "BED tests how incentives shape behavior in real time. You’re inside a live research environment."
+    weight: 2
+    cooldown_hours: 24
+
+  # ————————————————
+  # META / COLLECTIVE (Evening)
+  # ————————————————
+  - id: meta_collective_1
+    category: meta
+    text: "The Collective grows stronger with every action. Momentum is a shared resource."
+    weight: 3
     cooldown_hours: 10
+
+  - id: meta_system_1
+    category: meta
+    text: "BED is not a product — it’s a system. A living engine shaped by your behavior."
+    weight: 2
+    cooldown_hours: 10
+
+  # ————————————————
+  # LINKS / EXTERNAL (Evening)
+  # ————————————————
+  - id: link_twitter_1
+    category: link
+    text: "Follow the BED feed on X for deeper insights → https://twitter.com/bedsystems"
+    weight: 2
+    cooldown_hours: 12
+
+  - id: link_docs_1
+    category: link
+    text: "Explore the BED OS prototype and research materials → https://bedmitstudy.github.io/BEDMIT/"
+    weight: 2
+    cooldown_hours: 12
