@@ -31,10 +31,10 @@ function weightedPick(list) {
 function getCategoryForTime() {
   const hour = new Date().getHours();
 
-  if (hour >= 7 && hour < 12) return "intro";      // Morning
-  if (hour >= 12 && hour < 17) return "mission";   // Mid‑day
-  if (hour >= 17 && hour < 22) return "research";  // Evening
-  return "meta";                                   // Night fallback
+  if (hour >= 7 && hour < 12) return ["intro"];
+  if (hour >= 12 && hour < 17) return ["mission", "token"];
+  if (hour >= 17 && hour < 22) return ["research", "meta", "link"];
+  return ["meta", "intro"];
 }
 
 // Send message to Telegram
@@ -49,17 +49,16 @@ async function sendTelegram(text) {
     body: JSON.stringify({
       chat_id: chatId,
       text: text
-      // No parse_mode to avoid Markdown issues
     })
   });
 }
 
 async function main() {
-  const category = getCategoryForTime();
+  const categories = getCategoryForTime();
 
   // Filter by category + cooldown
   let eligibleMessages = messages.filter(
-    (m) => m.category === category && eligible(m)
+    (m) => categories.includes(m.category) && eligible(m)
   );
 
   // If none available, fallback to ANY eligible message
