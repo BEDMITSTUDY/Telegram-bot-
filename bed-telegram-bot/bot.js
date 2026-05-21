@@ -2,7 +2,7 @@ const fs = require("fs");
 const yaml = require("js-yaml");
 const TelegramBot = require("node-telegram-bot-api");
 
-// MUST specify polling: false for GitHub Actions
+// REQUIRED for GitHub Actions
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 
 function getRandomMessage() {
