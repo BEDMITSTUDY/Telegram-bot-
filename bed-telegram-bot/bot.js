@@ -1,6 +1,6 @@
 import fs from "fs";
 import yaml from "js-yaml";
-import fetch from "node-fetch";
+// Node 18+ has built-in fetch — no import needed
 
 const messages = yaml.load(fs.readFileSync("bed_bot_messages.yml", "utf8")).messages;
 const stateFile = "state.json";
