@@ -1,26 +1,25 @@
-name: BED Telegram Autoposter
+messages:
+  - id: hype1
+    text: "BSPR is heating up — stay sharp."
+    weight: 3
+    cooldown_hours: 6
 
-on:
-  schedule:
-    - cron: "*/30 * * * *"   # runs every 30 minutes
-  workflow_dispatch:
+  - id: hype2
+    text: "Momentum rising. Collective energy is building."
+    weight: 2
+    cooldown_hours: 4
 
-jobs:
-  send:
-    runs-on: ubuntu-latest
+  - id: utility1
+    text: "Remember: scanning earns rewards. Stay active."
+    weight: 1
+    cooldown_hours: 12
 
-    steps:
-      - uses: actions/checkout@v4
+  - id: mission1
+    text: "Complete your daily scan to stay in the Collective loop."
+    weight: 2
+    cooldown_hours: 8
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run autoposter
-        run: node bot.js
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  - id: community1
+    text: "The Collective grows stronger with every action."
+    weight: 1
+    cooldown_hours: 10
