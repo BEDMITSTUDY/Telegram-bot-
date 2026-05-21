@@ -1,83 +1,23 @@
-import fs from "fs";
-import yaml from "js-yaml";
+const fs = require("fs");
+const yaml = require("js-yaml");
+const TelegramBot = require("node-telegram-bot-api");
 
-// Load messages
-const messages = yaml.load(fs.readFileSync("bed_bot_messages.yml", "utf8")).messages;
-const stateFile = "state.json";
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN);
 
-// Load cooldown state
-let state = {};
-if (fs.existsSync(stateFile)) {
-  state = JSON.parse(fs.readFileSync(stateFile, "utf8"));
+function getRandomMessage() {
+  const file = yaml.load(fs.readFileSync("bed_bot_messages.yml", "utf8"));
+  const messages = file.messages;
+  return messages[Math.floor(Math.random() * messages.length)];
 }
 
-// Check cooldown eligibility
-function eligible(msg) {
-  const last = state[msg.id] || 0;
-  const hours = (Date.now() - last) / (1000 * 60 * 60);
-  return hours >= (msg.cooldown_hours || 0);
-}
-
-// Weighted random selection
-function weightedPick(list) {
-  const total = list.reduce((a, b) => a + b.weight, 0);
-  let r = Math.random() * total;
-  for (const m of list) {
-    if ((r -= m.weight) <= 0) return m;
+async function autopost() {
+  try {
+    const msg = getRandomMessage();
+    await bot.sendMessage(process.env.CHAT_ID, msg);
+    console.log("Message sent:", msg);
+  } catch (err) {
+    console.error("Error sending message:", err);
   }
 }
 
-// Time‑of‑day → category mapping
-function getCategoryForTime() {
-  const hour = new Date().getHours();
-
-  if (hour >= 7 && hour < 12) return ["intro"];
-  if (hour >= 12 && hour < 17) return ["mission", "token"];
-  if (hour >= 17 && hour < 22) return ["research", "meta", "link"];
-  return ["meta", "intro"];
-}
-
-// Send message to Telegram
-async function sendTelegram(text) {
-  const token = process.env.TELEGRAM_TOKEN;
-  const chatId = process.env.CHAT_ID;
-
-  const url = `https://api.telegram.org/bot${token}/sendMessage`;
-  await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: text
-    })
-  });
-}
-
-async function main() {
-  const categories = getCategoryForTime();
-
-  // Filter by category + cooldown
-  let eligibleMessages = messages.filter(
-    (m) => categories.includes(m.category) && eligible(m)
-  );
-
-  // If none available, fallback to ANY eligible message
-  if (eligibleMessages.length === 0) {
-    eligibleMessages = messages.filter(eligible);
-  }
-
-  // If still none, exit silently
-  if (eligibleMessages.length === 0) return;
-
-  // Pick message
-  const msg = weightedPick(eligibleMessages);
-
-  // Send it
-  await sendTelegram(msg.text);
-
-  // Update cooldown state
-  state[msg.id] = Date.now();
-  fs.writeFileSync(stateFile, JSON.stringify(state, null, 2));
-}
-
-main();
+autopost();
